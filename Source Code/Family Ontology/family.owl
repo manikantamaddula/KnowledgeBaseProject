@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY family "http://www.semanticweb.org/manikanta/ontologies/2016/4/family#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/manikanta/ontologies/2016/4/family#"
+     xml:base="http://www.semanticweb.org/manikanta/ontologies/2016/4/family"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:family="http://www.semanticweb.org/manikanta/ontologies/2016/4/family#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/manikanta/ontologies/2016/4/family">
+        <rdfs:comment>This is developed as part of knowledge base project assigned by Dr. Lee. This ontology is about family and relations between different persons of a family. This can be said as version 1.0</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#maxExlcusive -->
+
+    <owl:AnnotationProperty rdf:about="&family;maxExlcusive"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasAncestor -->
+
+    <owl:ObjectProperty rdf:about="&family;hasAncestor">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&family;Person"/>
+        <rdfs:domain rdf:resource="&family;Person"/>
+        <owl:inverseOf rdf:resource="&family;hasDescendent"/>
+        <owl:propertyDisjointWith rdf:resource="&family;isMarriedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasBrother -->
+
+    <owl:ObjectProperty rdf:about="&family;hasBrother">
+        <rdfs:range rdf:resource="&family;Male"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasSibling"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasChild -->
+
+    <owl:ObjectProperty rdf:about="&family;hasChild"/>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasDaughter -->
+
+    <owl:ObjectProperty rdf:about="&family;hasDaughter">
+        <rdfs:range rdf:resource="&family;Female"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasChild"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasDescendent -->
+
+    <owl:ObjectProperty rdf:about="&family;hasDescendent">
+        <owl:propertyDisjointWith rdf:resource="&family;isMarriedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasFather -->
+
+    <owl:ObjectProperty rdf:about="&family;hasFather">
+        <rdfs:range rdf:resource="&family;Male"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasParent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasMother -->
+
+    <owl:ObjectProperty rdf:about="&family;hasMother">
+        <rdfs:range rdf:resource="&family;Female"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasParent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasParent -->
+
+    <owl:ObjectProperty rdf:about="&family;hasParent">
+        <rdfs:subPropertyOf rdf:resource="&family;hasAncestor"/>
+        <owl:inverseOf rdf:resource="&family;hasChild"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasSibling -->
+
+    <owl:ObjectProperty rdf:about="&family;hasSibling">
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:range rdf:resource="&family;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasSister -->
+
+    <owl:ObjectProperty rdf:about="&family;hasSister">
+        <rdfs:range rdf:resource="&family;Female"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasSibling"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasSon -->
+
+    <owl:ObjectProperty rdf:about="&family;hasSon">
+        <rdfs:range rdf:resource="&family;Male"/>
+        <rdfs:subPropertyOf rdf:resource="&family;hasChild"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#isMarriedTo -->
+
+    <owl:ObjectProperty rdf:about="&family;isMarriedTo">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:domain rdf:resource="&family;Person"/>
+        <rdfs:range rdf:resource="&family;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#fullName -->
+
+    <owl:DatatypeProperty rdf:about="&family;fullName">
+        <rdfs:domain rdf:resource="&family;Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#hasAge -->
+
+    <owl:DatatypeProperty rdf:about="&family;hasAge">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Adult -->
+
+    <owl:Class rdf:about="&family;Adult">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">20</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Brother -->
+
+    <owl:Class rdf:about="&family;Brother">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Male"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasSibling"/>
+                        <owl:someValuesFrom rdf:resource="&family;Person"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Child -->
+
+    <owl:Class rdf:about="&family;Child">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="&xsd;integer">10</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Daughter -->
+
+    <owl:Class rdf:about="&family;Daughter">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Female"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasParent"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Father"/>
+                                    <rdf:Description rdf:about="&family;Mother"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+        <owl:disjointWith rdf:resource="&family;Son"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#FamilyMembers -->
+
+    <owl:Class rdf:about="&family;FamilyMembers"/>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Father -->
+
+    <owl:Class rdf:about="&family;Father">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Male"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasChild"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Daughter"/>
+                                    <rdf:Description rdf:about="&family;Son"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+        <owl:disjointWith rdf:resource="&family;Mother"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Female -->
+
+    <owl:Class rdf:about="&family;Female">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;isMarriedTo"/>
+                <owl:allValuesFrom rdf:resource="&family;Male"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&family;Male"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#GrandFather -->
+
+    <owl:Class rdf:about="&family;GrandFather">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Male"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasChild"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Father"/>
+                                    <rdf:Description rdf:about="&family;Mother"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#GrandMother -->
+
+    <owl:Class rdf:about="&family;GrandMother">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Female"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasChild"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Father"/>
+                                    <rdf:Description rdf:about="&family;Mother"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Male -->
+
+    <owl:Class rdf:about="&family;Male">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;isMarriedTo"/>
+                <owl:allValuesFrom rdf:resource="&family;Female"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Mother -->
+
+    <owl:Class rdf:about="&family;Mother">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Female"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasChild"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Daughter"/>
+                                    <rdf:Description rdf:about="&family;Son"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Person -->
+
+    <owl:Class rdf:about="&family;Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;hasMother"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;hasFather"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;isMarriedTo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;hasAge"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&family;hasParent"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&family;Female"/>
+            <rdf:Description rdf:about="&family;Male"/>
+        </owl:disjointUnionOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Senior -->
+
+    <owl:Class rdf:about="&family;Senior">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">65</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Sister -->
+
+    <owl:Class rdf:about="&family;Sister">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Female"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasSibling"/>
+                        <owl:someValuesFrom rdf:resource="&family;Person"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Son -->
+
+    <owl:Class rdf:about="&family;Son">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Male"/>
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasParent"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&family;Father"/>
+                                    <rdf:Description rdf:about="&family;Mother"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&family;FamilyMembers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Teen -->
+
+    <owl:Class rdf:about="&family;Teen">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&family;Adult"/>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">10</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Teenager -->
+
+    <owl:Class rdf:about="&family;Teenager">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&family;Person"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&family;Adult"/>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&family;hasAge"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">13</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Ayyappa -->
+
+    <owl:NamedIndividual rdf:about="&family;Ayyappa">
+        <rdf:type rdf:resource="&family;Male"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">15</hasAge>
+        <fullName>Ayyappa Konda</fullName>
+        <hasMother rdf:resource="&family;Kumari"/>
+        <hasSister rdf:resource="&family;Varsha"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Chelamaiah -->
+
+    <owl:NamedIndividual rdf:about="&family;Chelamaiah">
+        <rdf:type rdf:resource="&family;Male"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">67</hasAge>
+        <fullName>Chelamaiah Boggarapu</fullName>
+        <isMarriedTo rdf:resource="&family;Lakshmi"/>
+        <hasDaughter rdf:resource="&family;Nagamani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Kumari -->
+
+    <owl:NamedIndividual rdf:about="&family;Kumari">
+        <rdf:type rdf:resource="&family;Female"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">35</hasAge>
+        <fullName>Kumari Konda</fullName>
+        <hasSon rdf:resource="&family;Ayyappa"/>
+        <hasFather rdf:resource="&family;Chelamaiah"/>
+        <hasMother rdf:resource="&family;Lakshmi"/>
+        <hasSister rdf:resource="&family;Nagamani"/>
+        <hasDaughter rdf:resource="&family;Varsha"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Lakshmi -->
+
+    <owl:NamedIndividual rdf:about="&family;Lakshmi">
+        <rdf:type rdf:resource="&family;Female"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">63</hasAge>
+        <fullName>Lakshmi Boggarapu</fullName>
+        <isMarriedTo rdf:resource="&family;Chelamaiah"/>
+        <hasDaughter rdf:resource="&family;Nagamani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Manikanta -->
+
+    <owl:NamedIndividual rdf:about="&family;Manikanta">
+        <rdf:type rdf:resource="&family;Male"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">25</hasAge>
+        <fullName>Manikanta Maddula</fullName>
+        <hasBrother rdf:resource="&family;Mukesh"/>
+        <hasMother rdf:resource="&family;Nagamani"/>
+        <hasFather rdf:resource="&family;Ramesh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Mukesh -->
+
+    <owl:NamedIndividual rdf:about="&family;Mukesh">
+        <rdf:type rdf:resource="&family;Male"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">23</hasAge>
+        <fullName>Mukesh Maddula</fullName>
+        <hasBrother rdf:resource="&family;Manikanta"/>
+        <hasMother rdf:resource="&family;Nagamani"/>
+        <hasFather rdf:resource="&family;Ramesh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Nagamani -->
+
+    <owl:NamedIndividual rdf:about="&family;Nagamani">
+        <rdf:type rdf:resource="&family;Female"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">38</hasAge>
+        <fullName>Nagamani Maddula</fullName>
+        <hasFather rdf:resource="&family;Chelamaiah"/>
+        <hasMother rdf:resource="&family;Lakshmi"/>
+        <hasSon rdf:resource="&family;Manikanta"/>
+        <hasSon rdf:resource="&family;Mukesh"/>
+        <isMarriedTo rdf:resource="&family;Ramesh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Ramesh -->
+
+    <owl:NamedIndividual rdf:about="&family;Ramesh">
+        <rdf:type rdf:resource="&family;Male"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">42</hasAge>
+        <fullName>Ramesh Maddula</fullName>
+        <hasSon rdf:resource="&family;Manikanta"/>
+        <hasSon rdf:resource="&family;Mukesh"/>
+        <isMarriedTo rdf:resource="&family;Nagamani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/manikanta/ontologies/2016/4/family#Varsha -->
+
+    <owl:NamedIndividual rdf:about="&family;Varsha">
+        <rdf:type rdf:resource="&family;Female"/>
+        <rdf:type rdf:resource="&family;Person"/>
+        <hasAge rdf:datatype="&xsd;nonNegativeInteger">18</hasAge>
+        <fullName>Varsha Konda</fullName>
+        <hasBrother rdf:resource="&family;Ayyappa"/>
+        <hasMother rdf:resource="&family;Kumari"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
